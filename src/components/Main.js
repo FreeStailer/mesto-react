@@ -1,21 +1,21 @@
-function Main() {
+function Main(props) {
     return (
-        <main class="main">
-              <section class="profile">
-                  <div class="profile__card">
-                      <div class="profile__avatar">
-                          <button class="profile__avatar profile__avatar-edit-button" type="button"></button>
+        <main className="main">
+              <section className="profile">
+                  <div className="profile__card">
+                      <div className="profile__avatar">
+                          <button className="profile__avatar profile__avatar-edit-button" type="button"></button>
                       </div>
-                      <div class="profile__info">
-                          <h1 class="profile__name">Жак</h1>
-                          <button type="button" class="profile__button-edit"></button>
-                          <p class="profile__comment">Водоплавующий</p>
+                      <div className="profile__info">
+                          <h1 className="profile__name">Жак</h1>
+                          <button type="button" className="profile__button-edit" onClick={props.onEditProfile}></button>
+                          <p className="profile__comment">Водоплавующий</p>
                       </div>
                   </div>
-                  <button type="button" class="profile__button-add"></button>
+                  <button type="button" className="profile__button-add"></button>
               </section>
               <section>
-                  <ul class="cards">
+                  <ul className="cards">
 
                   </ul>
               </section>
