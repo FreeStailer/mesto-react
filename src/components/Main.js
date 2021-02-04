@@ -1,9 +1,12 @@
 import React from 'react';
 import api from "../utils/Api.js";
+import Card from "./Card.js";
 
 function Main(props) {
+    //стейты
     const [userData, setUserData] = React.useState({userName: '', userAvatar: '', userDescription: ''});
-    
+    const [cards, setCards] = React.useState([]);
+
     React.useEffect(() => {
         api.getUserData()
         .then((res) => {
@@ -12,7 +15,14 @@ function Main(props) {
         .catch((err) => {
             console.log('Ошибочка в получении данных пользователя: ', err);
         })
-    })
+        api.getInitialCards()
+        .then((res) => {
+            setCards(res)
+        })
+        .catch((err) => {
+            console.log('Ошибочка в получении списка карточек: ', err);
+        })
+    }, [])
     
     return (
         <main className="main">
@@ -31,7 +41,9 @@ function Main(props) {
               </section>
               <section>
                   <ul className="cards">
-
+                    {cards.map((card) => (
+                        <Card card={card} key={card._id} onCardClick={props.onCardClick} onDelClick={props.onDelClick}/>
+                    ))}
                   </ul>
               </section>
           </main>

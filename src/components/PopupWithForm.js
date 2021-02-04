@@ -7,6 +7,7 @@ function PopupWithForm(props) {
                 <form id={props.formId} className="form" method="GET" noValidate>
                     <fieldset className="form__input">
                         {props.children}
+                        <button type="submit" className="form__button">{props.onSubmit}</button>
                     </fieldset>
                 </form>
             </div>
