@@ -1,6 +1,21 @@
 import React from 'react';
 
 function ImagePopup(props) {
+
+    const [isOpen, onClose] = [props.isOpen, props.onClose];
+    React.useEffect(() => {
+      if (!isOpen) return;
+      const handleEscapeClose = (event) => {
+        if (event.key === 'Escape') {
+          onClose();
+        }
+      };
+      document.addEventListener("keydown", handleEscapeClose);
+      return () => {
+        document.removeEventListener("keydown", handleEscapeClose);
+      };
+    }, [isOpen, onClose]);
+    
     return (
         <div className={`modal modal_viewer ${props.isOpen ? "modal_open" : ""}`}>
             <div className="modal__content modal__content_viewer">
