@@ -2,7 +2,6 @@ import React from 'react';
 
 function ImagePopup(props) {
 
-    //const [isOpen, onClose] = [props.isOpen, props.onClose];
     const {isOpen, onClose} = props;
     React.useEffect(() => {
       if (!isOpen) return;
