@@ -2,7 +2,7 @@ import React from 'react';
 
 function Card(props) {
     return (
-            <li key={props.card._id} className="card">
+            <li className="card">
                 <img className="card__photo" 
                     src={props.card.link} 
                     alt={props.card.text} 
