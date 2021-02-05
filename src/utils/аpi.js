@@ -1,4 +1,4 @@
-export class Api {
+class Api {
     constructor(options) {
         this._headers = options.headers;
         this._baseUrl = options.baseUrl;
@@ -68,7 +68,7 @@ export class Api {
     }
 }
 
-//база для поключения к WebAPI
+//база для поключения к WebAPI и использование класса
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
     headers: {
