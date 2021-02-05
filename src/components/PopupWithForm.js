@@ -4,17 +4,24 @@ function PopupWithForm(props) {
 
     const [isOpen, onClose] = [props.isOpen, props.onClose];
     React.useEffect(() => {
-      if (!isOpen) return;
-      const handleEscapeClose = (event) => {
-        if (event.key === 'Escape') {
-          onClose();
+        if (!isOpen) return;
+        const handleEscapeClose = (event) => {
+          if (event.key === 'Escape') {
+            onClose();
+          }
+        };
+        const handleOverlayClose = (event) => {
+          if (event.target.classList.contains('modal') || event.target.classList.contains('modal__button-close')) {
+              onClose();
+              }
         }
-      };
-      document.addEventListener("keydown", handleEscapeClose);
-      return () => {
-        document.removeEventListener("keydown", handleEscapeClose);
-      };
-    }, [isOpen, onClose]);
+        document.addEventListener("keydown", handleEscapeClose);
+        document.addEventListener("mousedown", handleOverlayClose);
+        return () => {
+          document.removeEventListener("keydown", handleEscapeClose);
+          document.removeEventListener("mousedown", handleOverlayClose);
+        };
+      }, [isOpen, onClose]);
 
     return (
         <div id={props.popupId} className={`modal modal_profile ${props.isOpen ? "modal_open" : ""}`}>
