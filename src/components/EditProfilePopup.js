@@ -23,6 +23,7 @@ function EditProfilePopup(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        props.setLoadingStatus(true);
         props.onUpdateUser({
             name,
             about: description,
@@ -30,7 +31,7 @@ function EditProfilePopup(props) {
     }
 
     return (
-        <PopupWithForm isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit} buttonText ="Сохранить" popupId="edit" title="Редактировать профиль" formId="edit-profile">
+        <PopupWithForm isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit} buttonText ={props.isLoading ? 'Сохранение...' : 'Изменить'} popupId="edit" title="Редактировать профиль" formId="edit-profile">
                 <label htmlFor="name" className="form__label">
                     <input onChange={handleSetName} value={name} placeholder="Имя" type="text" name="name" id="name" className="form__item" required minLength="2" maxLength="40" />
                     <span className="form__input-error" id="name-error" />

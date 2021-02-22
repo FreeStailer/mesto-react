@@ -20,9 +20,9 @@ function Card(props) {
     function handleDeleteClick() {
         props.onDeleteCard(props.card)
     }
-
+//удалил кей и добавил ...забыл как называется...когда в процессе удадения или создания тексты кнопок
     return (
-            <li key={props.card._id} className="card">
+            <li className="card">
                 <img className="card__photo" 
                     src={props.card.link} 
                     alt={props.card.text} 

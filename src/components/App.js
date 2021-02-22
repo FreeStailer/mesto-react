@@ -88,6 +88,8 @@ function handleAddPlaceSubmit(userCardData) {
     })
 }
 
+const [popupLoading, setPopupLoading] = React.useState(false);
+
 //из предыдущего спринта:
 const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
 function handleEditProfileClick() {
@@ -124,6 +126,7 @@ function closeAllPopups() {
     setIsEditAvatarPopupOpen(false)
     setIsImagePopupOpen(false)
     setIsDelPopupOpen(false)
+    setPopupLoading(false);
 }
 
   return (
@@ -135,13 +138,18 @@ function closeAllPopups() {
                   onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
             <Footer />
 
-            <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+            <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 
+                              onClose={closeAllPopups} 
+                              isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
             
-            <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+            <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
+                             isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
             
-            <AddPlacePopup onAddCard={handleAddPlaceSubmit} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+            <AddPlacePopup onAddCard={handleAddPlaceSubmit} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} 
+                           isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
             
-            <DelCardPopup onDeleteCard={handleCardDelete} isOpen={isDelPopupOpen} onClose={closeAllPopups} />
+            <DelCardPopup onDeleteCard={handleCardDelete} isOpen={isDelPopupOpen} onClose={closeAllPopups} 
+                          isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
             
             <ImagePopup isOpen={isImagePopupOpen} card={selectedCard} onClose={closeAllPopups}/>
         </div>
