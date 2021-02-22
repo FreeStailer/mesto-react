@@ -27,7 +27,7 @@ export class Api {
     //добавить карточку
     addUserCard(values) {
         return this._fetch('/cards', 'POST', JSON.stringify({
-            name: values.title,
+            name: values.place,
             link: values.link
         }))
     }
@@ -40,6 +40,14 @@ export class Api {
     //удалить лайк
     removeCardLike(cardId) {
         return this._fetch(`/cards/likes/${cardId}`, 'DELETE')
+    }
+
+    changeLikeCardStatus(cardId, isLiked) {
+        if(isLiked) {
+            return this.takeCardLike(cardId)
+        } else {
+            return this.removeCardLike(cardId)
+        }
     }
 
     //удалить карточку

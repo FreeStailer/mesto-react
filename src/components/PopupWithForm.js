@@ -28,10 +28,10 @@ function PopupWithForm(props) {
             <div className="modal__content">
                 <button type="button" className="modal__button-close" onClick={props.onClose}></button>
                 <h2 className="modal__heading">{props.title}</h2>
-                <form id={props.formId} className="form" method="GET" noValidate>
+                <form id={props.formId} onSubmit={props.onSubmit} className="form" method="GET" noValidate>
                     <fieldset className="form__input">
                         {props.children}
-                        <button type="submit" className="form__button">{props.onSubmit}</button>
+                        <button type="submit" className="form__button">{props.buttonText}</button>
                     </fieldset>
                 </form>
             </div>

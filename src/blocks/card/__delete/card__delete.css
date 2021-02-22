@@ -20,3 +20,8 @@
 .card__delete:focus {
     outline: none;
   }
+
+.card__delete_hidden {
+    display: none;
+    visibility: hidden;
+}
